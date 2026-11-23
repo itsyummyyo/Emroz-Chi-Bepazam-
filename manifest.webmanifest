@@ -1,25 +1,24 @@
 {
+  "id": "./",
   "name": "امروز چی بپزم؟",
   "short_name": "چی بپزم؟",
+  "description": "۱۵۰۰ دستور پخت سالم با کالری و ماکرو",
   "lang": "fa",
   "dir": "rtl",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
+  "orientation": "portrait",
+  "categories": ["food", "lifestyle"],
   "background_color": "#fff3e6",
   "theme_color": "#f0a062",
   "icons": [
-    {
-      "src": "icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    }
+    {"src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
+    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ],
+  "shortcuts": [
+    {"name": "لیست خرید", "url": "./index.html#shop", "icons": [{"src": "icon-192.png", "sizes": "192x192"}]},
+    {"name": "توی یخچالم چی دارم؟", "url": "./index.html#fridge", "icons": [{"src": "icon-192.png", "sizes": "192x192"}]}
   ]
 }

@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <meta name="theme-color" content="#f0a062" />
+<link rel="manifest" href="manifest.webmanifest" />
 <meta name="color-scheme" content="light dark" />
 <meta name="format-detection" content="telephone=no" />
 <title>امروز چی بپزم؟ | What to Cook Today?</title>
@@ -384,6 +385,64 @@ a.chip { text-decoration: none; display: inline-flex; align-items: center; }
 .legal-bar i { width: 3px; height: 3px; border-radius: 50%; background: var(--text-muted); opacity: .45; }
 .legal-actions { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 18px; }
 .copyright-line { margin-bottom: 110px; }
+/* ===== v5: performance + new features ===== */
+:root{--glass:rgba(255,251,246,.94);--glass-2:rgba(255,255,255,.55)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--glass:rgba(48,31,20,.94);--glass-2:rgba(255,255,255,.07)}}
+:root[data-theme="dark"]{--glass:rgba(48,31,20,.94);--glass-2:rgba(255,255,255,.07)}
+.card,.recipe-row,.grid-card,.featured-card,.cat-item,.search-box,.chip,.icon-btn,.seg,.btn-soft,.tools-row select,.stepper,.heart-btn,.bookmark-badge,.back-btn,.tag,.featured-info,.stepper button{-webkit-backdrop-filter:none;backdrop-filter:none}
+.app-shell::before,.app-shell::after{display:none}
+.app-shell{background:linear-gradient(170deg,var(--bg-app),var(--bg-outer))}
+.recipe-list>*,.grid-2>*{animation:none}
+.recipe-row{content-visibility:auto;contain-intrinsic-size:auto 96px}
+.grid-card{content-visibility:auto;contain-intrinsic-size:auto 200px}
+.screen{animation-duration:.16s}
+.thumb,.recipe-row img.thumb{box-shadow:none}
+.nav-item{padding:7px 9px;font-size:12px;position:relative}
+.nav-icon{position:relative}
+.badge{position:absolute;top:-5px;inset-inline-end:-9px;min-width:17px;height:17px;border-radius:9px;background:var(--danger);color:#fff;font:700 10.5px/17px var(--font);text-align:center;font-style:normal;padding:0 4px}
+.badge[hidden]{display:none}
+.quick{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px}
+.qcard{border:1px solid var(--glass-brd);border-radius:24px;padding:14px;text-align:start;cursor:pointer;display:flex;flex-direction:column;gap:3px;color:#fff;transition:transform .15s}
+.qcard:active{transform:scale(.97)}
+.qcard span{font-size:30px}.qcard b{font-size:15.5px;line-height:1.5}.qcard small{font-size:12.5px;opacity:.9}
+.q1{background:linear-gradient(145deg,#f4a05a,#c9631f)}.q2{background:linear-gradient(145deg,#6fa3a0,#3f7a78)}
+.rail{display:flex;gap:12px;overflow-x:auto;margin:0 -20px 20px;padding:2px 20px 8px;scrollbar-width:none}
+.rail::-webkit-scrollbar{display:none}
+.rcard{flex:0 0 138px;background:var(--glass);border:1px solid var(--glass-brd);border-radius:22px;padding:8px;cursor:pointer}
+.rcard .thumb{width:100%;height:96px;font-size:40px;margin-bottom:6px}
+.rcard h4{font-size:13px;line-height:1.6;font-weight:700;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.rcard small{color:var(--text-muted);font-size:12px}
+.dacts{display:flex;flex-direction:column;gap:10px;margin:4px 0 14px}
+.dacts .drow{display:flex;gap:10px}.dacts .btn-soft{flex:1;font-size:13.5px;padding:12px 8px}
+.shop-row{display:flex;align-items:center;gap:12px;padding:13px 14px;margin-bottom:8px;background:var(--glass);border:1px solid var(--glass-brd);border-radius:20px;cursor:pointer;font-size:15.5px}
+.shop-row .tick{width:24px;height:24px;border-radius:50%;border:2px solid var(--accent);display:grid;place-items:center;font-size:14px;color:#fff;flex-shrink:0}
+.shop-row.done .tick{background:var(--accent)}.shop-row.done .nm{text-decoration:line-through;color:var(--text-muted)}
+.shop-row .nm{flex:1;min-width:0}.shop-row .gr{font-size:13px;color:var(--text-muted)}
+.shop-row .x{background:none;border:0;color:var(--text-muted);font-size:15px;padding:4px 6px;cursor:pointer}
+.prog{height:8px;border-radius:6px;background:var(--line);overflow:hidden;margin:6px 0 16px}.prog i{display:block;height:100%;background:var(--accent);border-radius:6px;transition:width .3s}
+.shop-acts{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+.fr-h{font-size:15px;margin:14px 0 8px}.fr-grid{display:flex;flex-wrap:wrap;gap:8px}
+.fr-stp{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--text-muted);margin:0 0 6px}.fr-stp input{accent-color:var(--accent-dark)}
+.fr-sec{font-size:13.5px;font-weight:800;color:var(--accent-dark);margin:6px 2px 0}
+.miss{font-size:12.5px;color:var(--danger);margin-top:4px;line-height:1.7}
+#fr-res{margin-top:18px}
+#pick{z-index:60}.pk-card{margin-top:6px}.pk-card .featured-img{height:170px;border-radius:24px}
+.pk-emo{display:grid;place-items:center;font-size:72px;width:100%;border-radius:24px;background:linear-gradient(145deg,hsl(var(--h,40) 70% var(--l1)),hsl(var(--h,40) 70% var(--l2)))}
+.pk-card h3{font-size:19px;margin:12px 0 4px;line-height:1.6}.pk-btns{display:flex;gap:10px;margin-top:14px}.pk-btns .btn-primary{flex:1;padding:14px}
+.pk-pop{animation:pop .35s ease both}
+.toast{z-index:80}
+.cook{position:absolute;inset:0;z-index:50;background:var(--bg-app);display:flex;flex-direction:column;padding:calc(12px + env(safe-area-inset-top)) 18px calc(16px + env(safe-area-inset-bottom));gap:12px}
+.cook[hidden]{display:none}
+.cook-top{display:flex;align-items:center;gap:8px}.cook-ttl{flex:1;min-width:0}.cook-ttl b{display:block;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.cook-ttl small{color:var(--text-muted);font-size:13px}
+.cook-bar{height:6px;border-radius:4px;background:var(--line);overflow:hidden}.cook-bar i{display:block;height:100%;background:var(--accent);transition:width .25s}
+.cook-step{flex:1;overflow-y:auto;display:flex;align-items:center;font-weight:700;line-height:1.95;padding:6px 2px}
+.cook-ing{flex:1;overflow-y:auto;font-size:17px}.cook-ing div{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+.cook-timers{display:flex;flex-direction:column;gap:6px}
+.tm{display:flex;align-items:center;gap:10px;background:var(--accent-soft);border-radius:16px;padding:8px 14px}.tm span{flex:1;font-size:14px}.tm b{font-size:20px;font-variant-numeric:tabular-nums}.tm button{background:none;border:0;font-size:15px;cursor:pointer}
+.tm.fin{background:var(--danger);color:#fff;animation:pop .6s ease infinite alternate}
+.cook-tq{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}.cook-tq .chip{flex:0 0 auto}
+.cook-nav{display:flex;gap:10px}.cook-nav button{border:0;border-radius:22px;font-size:17px;font-weight:800;padding:16px;cursor:pointer;background:var(--accent-soft);color:var(--text-main)}
+.cook-nav .nx{flex:1;background:linear-gradient(145deg,#f4a05a,#c9631f);color:#fff}
 </style>
 </head>
 <body>
@@ -424,9 +483,11 @@ a.chip { text-decoration: none; display: inline-flex; align-items: center; }
       <input type="search" id="home-search" autocomplete="off" />
     </div>
 
+    <div id="quick"></div>
     <div class="featured-card" id="featured" role="button" tabindex="0"></div>
 
     <div class="categories-grid" id="categories-container"></div>
+    <div id="rail"></div>
 
     <div class="recent-block" id="recent-block" hidden><div class="section-header"><h2 id="recent-title"></h2></div><div class="recipe-list" id="recent-list" style="margin-bottom:22px"></div></div>
 
@@ -488,6 +549,7 @@ a.chip { text-decoration: none; display: inline-flex; align-items: center; }
       <div class="setting"><span data-i18n="savedCountLabel"></span><strong id="saved-counter">0</strong></div>
       <div class="setting"><span data-i18n="foodsLink"></span><button class="chip" data-go="foods" data-i18n="open"></button></div>
       <div class="setting" id="install-row" hidden><span data-i18n="installLabel"></span><button class="chip active" id="install-btn" data-i18n="installBtn"></button></div>
+      <div class="setting"><span data-i18n="inviteLabel"></span><button class="chip active" data-act="inv" data-i18n="inviteBtn"></button></div>
       <div class="setting"><span data-i18n="photosShareLabel"></span><button class="chip active" id="share-photos-btn" data-i18n="photosShareBtn"></button></div>
       <div class="setting"><span data-i18n="photosCountLabel"></span><strong id="photos-counter">0</strong></div>
       <div class="setting"><span data-i18n="backupLabel"></span><button class="chip" id="backup-btn" data-i18n="backupBtn"></button></div>
@@ -521,6 +583,8 @@ a.chip { text-decoration: none; display: inline-flex; align-items: center; }
     <div class="card" style="margin-top:0;padding-top:8px;padding-bottom:8px;" id="foods-list"></div>
   </div>
 
+  <div id="screen-shop" class="screen"></div>
+  <div id="screen-fridge" class="screen"></div>
   <!-- ۷. Detail -->
   <div id="screen-detail" class="screen">
     <div class="detail-hero">
@@ -539,9 +603,12 @@ a.chip { text-decoration: none; display: inline-flex; align-items: center; }
   <nav class="bottom-nav" id="bottom-nav" style="display:none;" aria-label="Main">
     <button class="nav-item active" data-tab="home" data-go="home"><span class="nav-icon">🏠</span><span data-i18n="navHome"></span></button>
     <button class="nav-item" data-tab="explore" data-go="explore"><span class="nav-icon">🔍</span><span data-i18n="navExplore"></span></button>
+    <button class="nav-item" data-tab="shop" data-go="shop"><span class="nav-icon">🛒<i class="badge" id="shop-badge" hidden></i></span><span data-i18n="navShop"></span></button>
     <button class="nav-item" data-tab="saved" data-go="saved"><span class="nav-icon">❤️</span><span data-i18n="navSaved"></span></button>
     <button class="nav-item" data-tab="profile" data-go="profile"><span class="nav-icon">👤</span><span data-i18n="navProfile"></span></button>
   </nav>
+  <div class="cook" id="cook" hidden></div>
+  <div class="legal-modal" id="pick" role="dialog" aria-modal="true"><div class="legal-sheet"><div class="legal-head"><h3 id="pick-title"></h3><button class="icon-btn" data-act="pick-x" aria-label="Close">✕</button></div><div class="legal-body" id="pick-body"></div></div></div>
   <div class="legal-modal" id="legal-modal" role="dialog" aria-modal="true" aria-hidden="true">
     <div class="legal-sheet">
       <div class="legal-head"><h3 id="legal-title"></h3><button class="icon-btn" data-legal-close aria-label="Close">✕</button></div>
@@ -559,7 +626,7 @@ a.chip { text-decoration: none; display: inline-flex; align-items: center; }
   'use strict';
   var $ = function (id) { return document.getElementById(id); };
   /* snapshot of the pristine page source, used to build a shareable copy that embeds user photos */
-  var SRC = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+  var SRC = location.protocol === 'file:' ? '<!DOCTYPE html>\n' + document.documentElement.outerHTML : '';
 
   /* ---------- storage (safe) ---------- */
   var mem = {};
@@ -610,7 +677,7 @@ a.chip { text-decoration: none; display: inline-flex; align-items: center; }
   }
   function savePhotoLocal(k, v) { return idb.put(k, v).catch(function () { var m = store.get('photos', {}); m[k] = v; store.set('photos', m); }); }
   function delPhotoLocal(k) { return idb.del(k).catch(function () { var m = store.get('photos', {}); delete m[k]; store.set('photos', m); }); }
-  function photoOf(r) { return photos[r.id] || r.img || ''; }
+  function photoOf(r) { return photos[r.id] || r.img || (MISS[r.id] ? '' : IMG_BASE + r.id + IMG_EXT); }
   function compressImage(file) {
     return new Promise(function (res, rej) {
       var fr = new FileReader();
@@ -632,6 +699,7 @@ a.chip { text-decoration: none; display: inline-flex; align-items: center; }
   function photoCount() { return Object.keys(photos).length; }
   function updatePhotoCounter() { var el = $('photos-counter'); if (el) el.textContent = nf(photoCount()); }
   function shareWithPhotos() {
+    if (!SRC) { fetch(location.href.split('#')[0]).then(function (r) { return r.text(); }).then(function (x) { SRC = x; shareWithPhotos(); }).catch(function () { toast(t('photosShareFail')); }); return; }
     try {
       var json = JSON.stringify(photos).replace(/</g, '\\u003c');
       var html = SRC.replace(/(<script type="application\/json" id="user-photos">)[\s\S]*?(<\/script>)/, function (m, a, b) { return a + json + b; });
@@ -989,7 +1057,7 @@ a.chip { text-decoration: none; display: inline-flex; align-items: center; }
   function thumb(r) {
     var h = CAT_META[r.cat].h;
     var pi = photoOf(r);
-    if (pi) return '<img class="thumb" loading="lazy" src="' + pi + '" alt="" data-fb="' + esc(r.emoji) + '" style="--h:' + h + '">';
+    if (pi) return '<img class="thumb" loading="lazy" decoding="async" src="' + pi + '" alt="" data-fb="' + esc(r.emoji) + '" style="--h:' + h + '">';
     return '<span class="thumb" style="--h:' + h + '" aria-hidden="true">' + r.emoji + '</span>';
   }
   function metaHTML(r) {
@@ -1132,7 +1200,7 @@ a.chip { text-decoration: none; display: inline-flex; align-items: center; }
     var tags = []; if (r.hp) tags.push(t('tags').highprotein); if (r.lc) tags.push(t('tags').lowcal); if (r.en2) tags.push(t('tags').energy); if (r.classic) tags.push(t('tags').classic);
     $('detail-tags').innerHTML = tags.map(function (x) { return '<span class="tag">' + x + '</span>'; }).join('');
 
-    var html = '<div class="photo-bar"><button class="chip active" data-photo-pick="1">' + (mine ? t('photoChange') : t('photoAdd')) + '</button>' + (mine ? '<button class="chip danger" data-photo-del="1">' + t('photoRemove') + '</button>' : '') + '</div>';
+    var html = detailActs() + '<div class="photo-bar"><button class="chip active" data-photo-pick="1">' + (mine ? t('photoChange') : t('photoAdd')) + '</button>' + (mine ? '<button class="chip danger" data-photo-del="1">' + t('photoRemove') + '</button>' : '') + '</div>';
     html += '<div class="card"><div class="card-head"><h3>' + t('perServing') + '</h3><div class="stepper"><button data-serv="-1" aria-label="-"' + (s <= 1 ? ' disabled' : '') + '>−</button><b>' + nf(s) + '</b><button data-serv="1" aria-label="+"' + (s >= 8 ? ' disabled' : '') + '>+</button></div></div>';
     html += '<div class="note" style="margin:0">' + t('servings') + '</div>';
     if (r.p != null) {
@@ -1159,7 +1227,7 @@ a.chip { text-decoration: none; display: inline-flex; align-items: center; }
   }
 
   /* ---------- routing (hash) ---------- */
-  var TABS = ['home', 'explore', 'saved', 'profile'];
+  var TABS = ['home', 'explore', 'shop', 'saved', 'profile', 'fridge'];
   function currentRoute() {
     var h = (location.hash || '').replace(/^#/, '');
     if (!h) return { s: '' };
@@ -1175,7 +1243,7 @@ a.chip { text-decoration: none; display: inline-flex; align-items: center; }
     el.classList.add('active'); if (el.scrollTo) el.scrollTop = 0;
     var nav = name !== 'onboarding';
     $('bottom-nav').style.display = nav ? 'flex' : 'none';
-    var tab = name === 'detail' ? (cur.fromTab || 'home') : name === 'foods' ? 'profile' : name;
+    var tab = name === 'detail' ? (cur.fromTab || 'home') : name === 'foods' ? 'profile' : name === 'fridge' ? 'home' : name;
     document.querySelectorAll('.nav-item').forEach(function (b) { b.classList.toggle('active', b.dataset.tab === tab); });
   }
   function route() {
@@ -1192,7 +1260,9 @@ a.chip { text-decoration: none; display: inline-flex; align-items: center; }
       return;
     }
     cur.screen = r.s;
-    if (r.s === 'home') { renderCategories(); renderFeatured(); renderHome(); }
+    if (r.s === 'home') { renderCategories(); renderFeatured(); renderHome(); renderQuick(); }
+    if (r.s === 'shop') renderShop();
+    if (r.s === 'fridge') renderFridge();
     if (r.s === 'explore') renderExplore();
     if (r.s === 'saved') renderSaved();
     if (r.s === 'foods') renderFoods();
@@ -1251,7 +1321,7 @@ a.chip { text-decoration: none; display: inline-flex; align-items: center; }
     if (el.closest('#share-photos-btn')) { shareWithPhotos(); return; }
     if (el.closest('#back-btn')) { goBack(); return; }
     if (el.closest('#start-btn')) { store.set('seen', true); go('home'); return; }
-    if (el.closest('#surprise-btn')) { var pool = DB.recipes.filter(function (r) { return !r.classic; }); go('r-' + pool[Math.floor(Math.random() * pool.length)].id); return; }
+    if (el.closest('#surprise-btn')) { openPick(); return; }
     if (el.closest('#copy-ing')) { copyIngredients(); return; }
     if (el.closest('#update-btn')) { location.reload(); return; }
     if (el.closest('#backup-btn')) {
@@ -1306,6 +1376,7 @@ a.chip { text-decoration: none; display: inline-flex; align-items: center; }
   });
   document.addEventListener('error', function (e) {
     var im = e.target; if (!im || im.tagName !== 'IMG' || !im.dataset.fb) return;
+    var mm = /\/(\d+)\.\w+$/.exec(im.getAttribute('src') || ''); if (mm) MISS[mm[1]] = 1;
     var span = document.createElement('span');
     span.className = im.dataset.hero ? 'hero-img' : im.dataset.big ? 'featured-img' : 'thumb';
     span.setAttribute('style', im.getAttribute('style') || ''); span.style.display = 'grid'; span.style.placeItems = 'center';
@@ -1315,6 +1386,235 @@ a.chip { text-decoration: none; display: inline-flex; align-items: center; }
   window.addEventListener('hashchange', route);
   window.addEventListener('beforeinstallprompt', function (e) { e.preventDefault(); deferredInstall = e; $('install-row').hidden = false; });
   window.addEventListener('appinstalled', function () { $('install-row').hidden = true; });
+
+  /* ===================== v5: pro features ===================== */
+  var IMG_BASE = 'img/', IMG_EXT = '.jpg', APP_URL = '', MISS = {};
+  function L(a, b) { return lang === 'fa' ? a : b; }
+  Object.assign(I18N.fa, { navShop: 'خرید', inviteLabel: 'دعوت دوستان', inviteBtn: 'اشتراک برنامه' });
+  Object.assign(I18N.en, { navShop: 'Shop', inviteLabel: 'Invite friends', inviteBtn: 'Share app' });
+  function doShare(o) {
+    if (navigator.share) { navigator.share({ title: o.title, text: o.text }).catch(function () {}); return; }
+    try { navigator.clipboard.writeText(o.text).then(function () { toast(L('کپی شد', 'Copied')); }, function () { toast(t('copyFail')); }); } catch (e) { toast(t('copyFail')); }
+  }
+  function appUrl() { return APP_URL || (/^https?:$/.test(location.protocol) ? location.origin + location.pathname : ''); }
+  function shareRecipe(id) {
+    var r = byId[id]; if (!r) return; var s = ui.servings || 1, u = appUrl(); u = u ? u + '#r-' + id : '';
+    var tx = '🍽 ' + rtitle(r) + '\n' + (timeStr(r) ? '⏱ ' + timeStr(r) + '  ' : '') + '🔥 ' + nf(r.kcal) + ' ' + t('kcal') + '\n\n' + L('مواد لازم:', 'Ingredients:') + '\n' +
+      r.ing.map(function (_, i) { var x = ingText(r, i, s); return '• ' + x.name + (x.g ? ' — ' + x.g : ''); }).join('\n') + '\n\n' + L('طرز تهیه:', 'Method:') + '\n' +
+      stepsOf(lang === 'en' && r.en ? r.en.steps : r.steps).map(function (x, i) { return nf(i + 1) + '. ' + x; }).join('\n') + '\n\n' + L('از اپ «امروز چی بپزم؟»', 'From “What to Cook Today?”') + (u ? '\n' + u : '');
+    doShare({ title: rtitle(r), text: tx });
+  }
+  function detailActs() {
+    return '<div class="dacts"><button class="btn-primary" data-act="cook">👨‍🍳 ' + L('شروع آشپزی', 'Start cooking') + '</button><div class="drow"><button class="btn-soft" data-act="shop-add-r">🛒 ' + L('افزودن به لیست خرید', 'Add to shopping list') + '</button><button class="btn-soft" data-act="share-r">📤 ' + L('اشتراک', 'Share') + '</button></div></div>';
+  }
+
+  /* ---------- shopping list ---------- */
+  var shop = store.get('shop', []);
+  function saveShop() { store.set('shop', shop); updShopBadge(); }
+  function updShopBadge() { var n = shop.filter(function (x) { return !x.d; }).length, b = $('shop-badge'); if (b) { b.textContent = nf(n); b.hidden = !n; } }
+  function addToShop(id) {
+    var r = byId[id]; if (!r) return; var s = ui.servings || 1;
+    r.ing.forEach(function (it, i) {
+      var k = norm(it.n), g = (it.g || 0) * s, h = shop.filter(function (x) { return x.k === k && !x.d; })[0];
+      if (h) h.g += g; else shop.push({ k: k, n: it.n, e: (r.en && r.en.ing && r.en.ing[i]) || it.n, g: g, d: 0 });
+    });
+    saveShop(); toast('🛒 ' + L('مواد به لیست خرید اضافه شد', 'Added to shopping list'));
+  }
+  function renderShop() {
+    var open = shop.filter(function (x) { return !x.d; }), done = shop.filter(function (x) { return x.d; });
+    var row = function (x) { var i = shop.indexOf(x); return '<div class="shop-row' + (x.d ? ' done' : '') + '" role="button" tabindex="0" data-act="shop-tog" data-i="' + i + '"><span class="tick">' + (x.d ? '✓' : '') + '</span><span class="nm">' + esc(lang === 'en' ? x.e : x.n) + '</span>' + (x.g ? '<span class="gr"><bdi>' + nf(x.g) + ' ' + t('g') + '</bdi></span>' : '') + '<button class="x" data-act="shop-del" data-i="' + i + '" aria-label="x">✕</button></div>'; };
+    $('screen-shop').innerHTML = '<div class="top-header"><div><h1>' + L('لیست <span>خرید</span>', 'Shopping <span>list</span>') + '</h1><p>' + L(nf(open.length) + ' مورد باقی‌مانده', nf(open.length) + ' left to buy') + '</p></div></div>' +
+      '<div class="search-box"><span aria-hidden="true">➕</span><input id="shop-add" autocomplete="off" enterkeyhint="done" placeholder="' + L('افزودن مورد دلخواه...', 'Add an item...') + '"></div>' +
+      (shop.length ? '<div class="prog"><i style="width:' + Math.round(done.length / shop.length * 100) + '%"></i></div>' : '') +
+      (shop.length ? open.map(row).join('') + (done.length ? '<div class="fr-sec" style="margin:14px 2px 8px">' + L('خریداری‌شده', 'In the basket') + '</div>' + done.map(row).join('') : '') +
+        '<div class="shop-acts"><button class="chip active" data-act="shop-share">📤 ' + L('ارسال لیست', 'Share list') + '</button>' + (done.length ? '<button class="chip" data-act="shop-clr-done">' + L('حذف خریده‌شده‌ها', 'Clear bought') + '</button>' : '') + '<button class="chip" data-act="shop-clr-all">' + L('خالی‌کردن لیست', 'Clear all') + '</button></div>'
+        : '<p class="empty">🛒<br>' + L('لیستت خالیه. از صفحه هر دستور، مواد رو اضافه کن.', 'Your list is empty. Add ingredients from any recipe.') + '</p>');
+  }
+
+  /* ---------- cooking mode ---------- */
+  var ck = { on: 0 }, timers = [], tid = 0, tint = null, actx = null, wl = null;
+  function stepSecs(s) {
+    s = String(s).replace(/[۰-۹]/g, function (d) { return d.charCodeAt(0) - 1776; });
+    if (/نیم\s*ساعت/.test(s)) return 1800;
+    var m = /(\d+(?:[.٫]\d+)?)\s*(?:(?:تا|to|-|–)\s*\d+(?:[.٫]\d+)?\s*)?(دقیقه|ساعت|ثانیه|minutes?|mins?|hours?|hrs?|seconds?|secs?)/i.exec(s);
+    if (!m) return 0;
+    var u = /^(د|m)/i.test(m[2]) ? 60 : /^(س|h)/i.test(m[2]) ? 3600 : 1;
+    return Math.min(14400, Math.round(parseFloat(m[1].replace('٫', '.')) * u));
+  }
+  function fmtT(s) { s = Math.max(0, Math.ceil(s)); var m = Math.floor(s / 60), ss = s % 60; return nf(m) + ':' + (ss < 10 ? nf(0) : '') + nf(ss); }
+  function fmtSec(s) { return s >= 60 ? fmtMin(Math.round(s / 60)) : nf(s) + L(' ثانیه', ' s'); }
+  function lockScreen() { try { if (navigator.wakeLock) navigator.wakeLock.request('screen').then(function (l) { wl = l; l.addEventListener('release', function () { wl = null; }); }).catch(function () {}); else toast(L('این مرورگر نگه‌داشتن صفحه روشن را پشتیبانی نمی‌کند', 'Keep-awake not supported here')); } catch (e) {} }
+  function unlockScreen() { try { if (wl) wl.release(); } catch (e) {} wl = null; }
+  function beep() {
+    try { if (actx) [0, 0.25, 0.5].forEach(function (d) { var o = actx.createOscillator(), g = actx.createGain(); o.frequency.value = 880; g.gain.value = 0.25; o.connect(g); g.connect(actx.destination); o.start(actx.currentTime + d); o.stop(actx.currentTime + d + 0.15); }); } catch (e) {}
+    try { if (navigator.vibrate) navigator.vibrate([300, 150, 300, 150, 300]); } catch (e) {}
+  }
+  function addTimer(sec, label) {
+    try { actx = actx || new (window.AudioContext || window.webkitAudioContext)(); if (actx.resume) actx.resume(); } catch (e) {}
+    timers.push({ id: ++tid, label: label, end: Date.now() + sec * 1000, fin: 0 });
+    if (!tint) tint = setInterval(tick, 500); renderTimers();
+  }
+  function tick() {
+    var now = Date.now();
+    timers.forEach(function (x) { if (!x.fin && now >= x.end) { x.fin = 1; beep(); toast('⏰ ' + x.label); } });
+    if (!timers.length) { clearInterval(tint); tint = null; }
+    renderTimers();
+  }
+  function renderTimers() {
+    var el = $('cook-timers'); if (!el) return;
+    el.innerHTML = timers.map(function (x) { return '<div class="tm' + (x.fin ? ' fin' : '') + '"><span>⏱ ' + esc(x.label) + '</span><b>' + (x.fin ? '⏰' : fmtT((x.end - Date.now()) / 1000)) + '</b><button data-act="tm-del" data-id="' + x.id + '" aria-label="x">✕</button></div>'; }).join('');
+  }
+  function openCook(id) {
+    var r = byId[id]; if (!r) return;
+    ck = { on: 1, r: r, st: stepsOf(lang === 'en' && r.en ? r.en.steps : r.steps), i: 0, fs: store.get('cfs', 1), ing: 0 };
+    $('cook').hidden = false; lockScreen(); renderCook();
+  }
+  function closeCook() { ck.on = 0; $('cook').hidden = true; unlockScreen(); }
+  function renderCook() {
+    var r = ck.r, n = ck.st.length, s = ck.st[ck.i] || '', sec = stepSecs(s), last = ck.i === n - 1, lb = L('مرحله ', 'Step ') + nf(ck.i + 1);
+    $('cook').innerHTML = '<div class="cook-top"><button class="icon-btn" data-act="cook-x" aria-label="x">✕</button><div class="cook-ttl"><b>' + esc(rtitle(r)) + '</b><small>' + lb + L(' از ', ' of ') + nf(n) + '</small></div><button class="icon-btn" data-act="cook-fs" data-d="-1">A−</button><button class="icon-btn" data-act="cook-fs" data-d="1">A+</button></div>' +
+      '<div class="cook-bar"><i style="width:' + ((ck.i + 1) / n * 100) + '%"></i></div>' +
+      (ck.ing ? '<div class="cook-ing">' + r.ing.map(function (_, i) { var x = ingText(r, i, ui.servings || 1); return '<div><span>' + esc(x.name) + '</span><bdi>' + (x.gr || '') + '</bdi></div>'; }).join('') + '</div>'
+        : '<div class="cook-step" style="font-size:' + Math.round(26 * ck.fs) + 'px">' + esc(s.replace(/\.?$/, '.')) + '</div>') +
+      '<div class="cook-timers" id="cook-timers"></div>' +
+      '<div class="cook-tq">' + (sec ? '<button class="chip active" data-act="tm-add" data-s="' + sec + '">⏱ ' + fmtSec(sec) + '</button>' : '') + [300, 600, 900, 1800].map(function (v) { return '<button class="chip" data-act="tm-add" data-s="' + v + '">' + fmtSec(v) + '</button>'; }).join('') + '</div>' +
+      '<div class="cook-nav"><button data-act="cook-prev" aria-label="prev">' + (lang === 'fa' ? '→' : '←') + '</button><button data-act="cook-ing">🧾</button><button class="nx" data-act="cook-next">' + (last ? L('تمام شد ✓', 'Done ✓') : L('مرحله بعد', 'Next') + ' ' + (lang === 'fa' ? '←' : '→')) + '</button></div>';
+    renderTimers();
+  }
+  (function () {
+    var sx = 0; var c = $('cook');
+    c.addEventListener('touchstart', function (e) { sx = e.touches[0].clientX; }, { passive: true });
+    c.addEventListener('touchend', function (e) {
+      var dx = e.changedTouches[0].clientX - sx; if (Math.abs(dx) < 70 || ck.ing) return;
+      var fwd = lang === 'fa' ? dx > 0 : dx < 0; cookGo(fwd ? 1 : -1);
+    }, { passive: true });
+  })();
+  function cookGo(d) {
+    if (d > 0 && ck.i === ck.st.length - 1) { closeCook(); toast(L('نوش جان! 🍽', 'Enjoy! 🍽')); return; }
+    ck.i = Math.max(0, Math.min(ck.st.length - 1, ck.i + d)); ck.ing = 0; renderCook();
+  }
+  document.addEventListener('visibilitychange', function () { if (!document.hidden) { if (ck.on && !wl) lockScreen(); if (timers.length) tick(); } });
+
+  /* ---------- fridge ---------- */
+  var FG = [
+    ['🍗', 'پروتئین', 'Protein', ['سینه مرغ بدون پوست', 'ران مرغ بدون پوست', 'مرغ چرخ‌کرده بدون پوست', 'گوشت گوساله کم‌چرب', 'گوشت چرخ‌کرده کم‌چرب گوساله', 'گوشت گوسفندی کم‌چرب', 'ماهی سالمون', 'ماهی سفید', 'ماهی قزل‌آلا', 'میگو', 'تن ماهی کنسرو در آب', 'تخم‌مرغ کامل', 'توفو']],
+    ['🥛', 'لبنیات', 'Dairy', ['ماست کم‌چرب', 'ماست یونانی کم‌چرب', 'شیر کم‌چرب', 'پنیر سفید ایرانی', 'پنیر کاتیج کم‌چرب']],
+    ['🥦', 'سبزی و صیفی', 'Veggies', ['پیاز', 'سیر', 'گوجه‌فرنگی', 'خیار', 'کاهو', 'سیب‌زمینی', 'سیب‌زمینی شیرین', 'فلفل دلمه‌ای', 'قارچ', 'اسفناج', 'هویج', 'بروکلی', 'کلم', 'کرفس', 'کدو سبز', 'کدو حلوایی', 'چغندر', 'بادمجان', 'لوبیا سبز', 'گل‌کلم', 'سبزی تازه', 'تره', 'شنبلیله تازه', 'ذرت شیرین']],
+    ['🍚', 'غلات و حبوبات', 'Grains & legumes', ['برنج سفید', 'برنج قهوه‌ای', 'ماکارونی سبوس‌دار', 'نان سنگک/سبوس‌دار', 'نان لواش', 'جو دوسر پرک', 'بلغور', 'کینوا', 'جو پوست‌کنده', 'آرد گندم کامل', 'عدس', 'لپه', 'نخود', 'لوبیا قرمز', 'لوبیا چیتی', 'ماش', 'باقلا']],
+    ['🍎', 'میوه', 'Fruit', ['سیب', 'موز', 'پرتقال', 'توت‌فرنگی', 'هلو', 'انگور', 'گلابی', 'کیوی', 'انار']],
+    ['🥜', 'مغزها و سایر', 'Nuts & more', ['گردو', 'بادام', 'پسته', 'فندق', 'تخمه کدو', 'کره بادام‌زمینی', 'ارده', 'عسل', 'خرما', 'دانه چیا', 'کنجد', 'کشمش', 'انجیر خشک', 'زردآلو خشک', 'آلو بخارا', 'پودر کاکائو', 'شکلات تلخ', 'پودر پروتئین وی', 'رب گوجه‌فرنگی']]
+  ];
+  var FR = { sel: {}, q: '', stp: true, lim: 20 }, STAPLE = { 'روغن زیتون': 1, 'ادویه خشک': 1, 'آبلیمو': 1 }, ENM = null;
+  function frEn() { if (ENM) return; ENM = {}; DB.recipes.forEach(function (r) { if (r.classic || !r.en || !r.en.ing) return; r.ing.forEach(function (it, i) { if (!ENM[it.n] && r.en.ing[i]) ENM[it.n] = r.en.ing[i]; }); }); }
+  function frChips() {
+    var q = norm(FR.q);
+    $('fr-chips').innerHTML = FG.map(function (g) {
+      var cs = g[3].filter(function (n) { return !q || norm(n).indexOf(q) !== -1 || norm(ENM[n] || '').indexOf(q) !== -1; });
+      return cs.length ? '<h3 class="fr-h">' + g[0] + ' ' + (lang === 'fa' ? g[1] : g[2]) + '</h3><div class="fr-grid">' + cs.map(function (n) { return '<button class="chip' + (FR.sel[n] ? ' active' : '') + '" data-act="fr-t" data-n="' + esc(n) + '">' + esc(lang === 'en' ? (ENM[n] || n) : n) + '</button>'; }).join('') + '</div>' : '';
+    }).join('');
+  }
+  function frRes() {
+    var ks = Object.keys(FR.sel), box = $('fr-res'); if (!box) return;
+    if (!ks.length) { box.innerHTML = '<p class="empty">🧊<br>' + L('چند ماده انتخاب کن تا پیشنهاد بدم.', 'Select a few ingredients to get ideas.') + '</p>'; return; }
+    var need = Math.min(2, ks.length), out = [];
+    DB.recipes.forEach(function (r) {
+      if (r.classic) return; var hit = 0, miss = [];
+      r.ing.forEach(function (it) { if (FR.sel[it.n]) hit++; else if (!(FR.stp && STAPLE[it.n])) miss.push(it.n); });
+      if (hit >= need && miss.length <= 4) out.push({ r: r, hit: hit, m: miss });
+    });
+    out.sort(function (a, b) { return a.m.length - b.m.length || b.hit - a.hit; });
+    var h = '<div class="section-header"><h2>' + L('پیشنهادها', 'Suggestions') + ' · ' + nf(out.length) + '</h2><button class="chip" data-act="fr-clr">✕ ' + L('پاک‌کردن', 'Clear') + ' (' + nf(ks.length) + ')</button></div><div class="recipe-list">', last = -1;
+    out.slice(0, FR.lim).forEach(function (x) {
+      if (x.m.length !== last) { last = x.m.length; h += '<div class="fr-sec">' + (last ? L(nf(last) + ' ماده کم داری', 'Missing ' + nf(last)) : '✅ ' + L('همه مواد رو داری', 'You have everything')) + '</div>'; }
+      h += '<div class="recipe-row" role="button" tabindex="0" data-open="' + x.r.id + '">' + thumb(x.r) + '<div class="recipe-row-info"><h4>' + esc(rtitle(x.r)) + '</h4><div class="meta-row">' + metaHTML(x.r) + '</div>' +
+        (x.m.length ? '<div class="miss">' + L('کم داری: ', 'Missing: ') + esc(x.m.map(function (n) { return lang === 'en' ? (ENM[n] || n) : n; }).join(lang === 'fa' ? '، ' : ', ')) + '</div>' : '') + '</div>' + heart(x.r) + '</div>';
+    });
+    h += '</div>' + (out.length > FR.lim ? '<button class="btn-soft more-btn" data-act="fr-more">' + t('showMore') + '</button>' : '');
+    box.innerHTML = out.length ? h : '<p class="empty">' + t('noResults') + '</p>';
+  }
+  function renderFridge() {
+    frEn();
+    $('screen-fridge').innerHTML = '<div class="top-header"><div><h1>' + L('توی <span>یخچالم</span> چی دارم؟', "What's in my <span>fridge</span>?") + '</h1><p>' + L('مواد موجود رو انتخاب کن، دستورهای مناسب رو ببین.', 'Pick what you have and see what you can cook.') + '</p></div></div>' +
+      '<div class="search-box"><span aria-hidden="true">🔍</span><input id="fr-q" type="search" autocomplete="off" placeholder="' + L('جستجوی ماده...', 'Search ingredient...') + '" value="' + esc(FR.q) + '"></div>' +
+      '<label class="fr-stp"><input type="checkbox" id="fr-stp"' + (FR.stp ? ' checked' : '') + '> ' + L('روغن، ادویه و آبلیمو رو دارم', 'I have oil, spices & lemon juice') + '</label><div id="fr-chips"></div><div id="fr-res"></div>';
+    frChips(); frRes();
+  }
+
+  /* ---------- pick for me ---------- */
+  var PK = { meal: 'any', time: 0, diff: 0, last: [], cur: null };
+  var MEALS = { bf: ['breakfast'], ln: ['main', 'stew', 'soup', 'starter', 'sandwich'], dn: ['main', 'stew', 'soup'], sn: ['snack', 'smoothie'], ds: ['dessert'], any: null };
+  function openPick() { var h = new Date().getHours(); PK.meal = h < 11 ? 'bf' : h < 16 ? 'ln' : h < 22 ? 'dn' : 'sn'; $('pick').classList.add('open'); doPick(); }
+  function closePick() { $('pick').classList.remove('open'); }
+  function doPick() {
+    var m = MEALS[PK.meal], pool = DB.recipes.filter(function (r) { return (!m || m.indexOf(r.cat) !== -1) && (!PK.time || (r.t || 99) <= PK.time) && (!PK.diff || (r.d || 1) <= PK.diff); });
+    var fresh = pool.filter(function (r) { return PK.last.indexOf(r.id) === -1; }); if (!fresh.length) { PK.last = []; fresh = pool; }
+    PK.cur = fresh.length ? fresh[Math.floor(Math.random() * fresh.length)] : null;
+    if (PK.cur) { PK.last.push(PK.cur.id); if (PK.last.length > 30) PK.last.shift(); }
+    renderPick();
+  }
+  function pkRow(key, items) { return '<div class="filter-chips">' + items.map(function (o) { return '<button class="chip' + (PK[key] === o[0] ? ' active' : '') + '" data-act="pk" data-k="' + key + '" data-v="' + o[0] + '">' + o[1] + '</button>'; }).join('') + '</div>'; }
+  function renderPick() {
+    var r = PK.cur;
+    $('pick-title').textContent = L('امروز چی بپزم؟ 🎲', 'What to cook? 🎲');
+    $('pick-body').innerHTML = pkRow('meal', [['bf', '🍳 ' + L('صبحانه', 'Breakfast')], ['ln', '🍛 ' + L('ناهار', 'Lunch')], ['dn', '🌙 ' + L('شام', 'Dinner')], ['sn', '🥜 ' + L('میان‌وعده', 'Snack')], ['ds', '🍓 ' + L('دسر', 'Dessert')], ['any', '✨ ' + L('هرچی', 'Any')]]) +
+      pkRow('time', [[0, '⏱ ' + L('هر زمان', 'Any time')], [15, L('تا ۱۵ دقیقه', '≤ 15 min')], [30, L('تا ۳۰ دقیقه', '≤ 30 min')], [60, L('تا ۱ ساعت', '≤ 1 h')]]) +
+      pkRow('diff', [[0, '🎚 ' + L('هر سختی', 'Any level')], [1, L('آسان', 'Easy')], [2, L('تا متوسط', 'Up to medium')]]) +
+      (r ? '<div class="pk-card pk-pop">' + (photoOf(r) ? thumbBig(r) : '<div class="pk-emo" style="--h:' + CAT_META[r.cat].h + ';height:170px">' + r.emoji + '</div>') + '<h3>' + esc(rtitle(r)) + '</h3><div class="meta-row">' + metaHTML(r) + '</div><div class="pk-btns"><button class="btn-primary" data-act="pk-go">' + L('همینو می‌پزم!', "Let's cook it!") + '</button><button class="btn-soft" data-act="pk-again">🎲 ' + L('یکی دیگه', 'Another') + '</button></div></div>'
+        : '<p class="empty">' + t('noResults') + '</p>');
+  }
+
+  /* ---------- home extras ---------- */
+  function renderQuick() {
+    $('quick').innerHTML = '<div class="quick"><button class="qcard q1" data-act="pick"><span>🎲</span><b>' + L('برام انتخاب کن', 'Pick for me') + '</b><small>' + L('امروز چی بپزم؟', 'What should I cook?') + '</small></button><button class="qcard q2" data-go="fridge"><span>🧊</span><b>' + L('توی یخچالم چی دارم؟', "What's in my fridge?") + '</b><small>' + L('با مواد خودت', 'Cook with what you have') + '</small></button></div>';
+    var day = Math.floor(Date.now() / 86400000), q = shuffled(DB.recipes.filter(function (r) { return !r.classic && r.t <= 20 && r.d === 1; }), day + 7).slice(0, 10);
+    $('rail').innerHTML = q.length ? '<div class="section-header"><h2>⚡ ' + L('سریع و آسان', 'Quick & easy') + '</h2></div><div class="rail">' + q.map(function (r) { return '<div class="rcard" role="button" tabindex="0" data-open="' + r.id + '">' + thumb(r) + '<h4>' + esc(rtitle(r)) + '</h4><small>⏱ ' + timeStr(r) + '</small></div>'; }).join('') + '</div>' : '';
+  }
+
+  /* ---------- event wiring ---------- */
+  document.addEventListener('click', function (e) {
+    if (e.target.id === 'pick') { closePick(); return; }
+    var x = e.target.closest && e.target.closest('[data-act]'); if (!x) return;
+    var a = x.dataset.act, i = +x.dataset.i;
+    if (a === 'pick') openPick();
+    else if (a === 'pick-x') closePick();
+    else if (a === 'pk') { PK[x.dataset.k] = x.dataset.k === 'meal' ? x.dataset.v : +x.dataset.v; doPick(); }
+    else if (a === 'pk-again') doPick();
+    else if (a === 'pk-go') { if (PK.cur) { closePick(); go('r-' + PK.cur.id); } }
+    else if (a === 'cook') openCook(cur.id);
+    else if (a === 'cook-x') closeCook();
+    else if (a === 'cook-prev') cookGo(-1);
+    else if (a === 'cook-next') cookGo(1);
+    else if (a === 'cook-ing') { ck.ing = ck.ing ? 0 : 1; renderCook(); }
+    else if (a === 'cook-fs') { ck.fs = Math.max(0.8, Math.min(1.8, ck.fs + 0.15 * +x.dataset.d)); store.set('cfs', ck.fs); renderCook(); }
+    else if (a === 'tm-add') addTimer(+x.dataset.s, L('مرحله ', 'Step ') + nf(ck.i + 1));
+    else if (a === 'tm-del') { timers = timers.filter(function (z) { return z.id !== +x.dataset.id; }); tick(); }
+    else if (a === 'shop-add-r') addToShop(cur.id);
+    else if (a === 'share-r') shareRecipe(cur.id);
+    else if (a === 'inv') doShare({ title: L('امروز چی بپزم؟', 'What to Cook Today?'), text: L('«امروز چی بپزم؟» — ۱۵۰۰ دستور پخت سالم با کالری و ماکرو 🍽', '“What to Cook Today?” — 1,500 healthy recipes with calories & macros 🍽') + (appUrl() ? '\n' + appUrl() : '') });
+    else if (a === 'shop-tog') { shop[i].d = shop[i].d ? 0 : 1; saveShop(); renderShop(); }
+    else if (a === 'shop-del') { shop.splice(i, 1); saveShop(); renderShop(); }
+    else if (a === 'shop-clr-done') { shop = shop.filter(function (z) { return !z.d; }); saveShop(); renderShop(); }
+    else if (a === 'shop-clr-all') { if (window.confirm(L('کل لیست خرید پاک شود؟', 'Clear the whole list?'))) { shop = []; saveShop(); renderShop(); } }
+    else if (a === 'shop-share') doShare({ title: L('لیست خرید', 'Shopping list'), text: '🛒 ' + L('لیست خرید', 'Shopping list') + '\n' + shop.filter(function (z) { return !z.d; }).map(function (z) { return '☐ ' + (lang === 'en' ? z.e : z.n) + (z.g ? ' — ' + nf(z.g) + ' ' + t('g') : ''); }).join('\n') });
+    else if (a === 'fr-t') { var n = x.dataset.n; if (FR.sel[n]) delete FR.sel[n]; else FR.sel[n] = 1; x.classList.toggle('active'); FR.lim = 20; frRes(); }
+    else if (a === 'fr-clr') { FR.sel = {}; FR.lim = 20; frChips(); frRes(); }
+    else if (a === 'fr-more') { FR.lim += 20; frRes(); }
+  });
+  document.addEventListener('input', function (e) {
+    if (e.target.id === 'fr-q') { FR.q = e.target.value; frChips(); }
+  });
+  document.addEventListener('change', function (e) { if (e.target.id === 'fr-stp') { FR.stp = e.target.checked; frRes(); } });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' && e.target.id === 'shop-add') {
+      var v = e.target.value.trim(); if (!v) return;
+      shop.push({ k: norm(v), n: v, e: v, g: 0, d: 0 }); saveShop(); renderShop(); var f = $('shop-add'); if (f) f.focus();
+    }
+  });
+  if (window.IntersectionObserver) {
+    var io = new IntersectionObserver(function (es) { es.forEach(function (en) { if (en.isIntersecting) { io.unobserve(en.target); en.target.click(); } }); });
+    ['popular-more', 'explore-more'].forEach(function (id) { var c = $(id); if (c) new MutationObserver(function () { var b = c.querySelector('.more-btn'); if (b) io.observe(b); }).observe(c, { childList: true }); });
+  }
+  updShopBadge();
 
   /* ---------- boot ---------- */
   function boot() {
